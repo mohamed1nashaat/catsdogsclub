@@ -7,15 +7,25 @@
 #}
 
 {# ---------------------------------------------------------------------------
-   Cats & Dogs Club — homepage sections are designer-managed components
-   registered in twilight.json (home.cds-*). Enable, reorder and edit them
-   from the Salla theme designer sidebar.
+   Cats & Dogs Club — homepage sections render in the exact order from the
+   Stitch design. Each section is also registered in twilight.json so the
+   merchant can edit/reorder them later in the Salla designer.
 --------------------------------------------------------------------------- #}
 
 {% extends "layouts.master" %}
 
 {% block content %}
-  {% component home %}
+  {% component 'home.cds-announcement' %}
+  {% component 'home.cds-hero' %}
+  {% component 'home.cds-pet-portals' %}
+  {% component 'home.cds-grooming' %}
+  {% component 'home.cds-categories' %}
+  {% component 'home.cds-products' with {'title': 'الأكثر طلبًا', 'subtitle': 'اختيارات يحبها أصحاب القطط والكلاب', 'source': 'sales', 'limit': 10, 'view_all_text': 'عرض الكل', 'view_all_link': 'products'} %}
+  {% component 'home.cds-promo-banner' %}
+  {% component 'home.cds-brands' %}
+  {% component 'home.cds-products' with {'title': 'وصل حديثاً', 'subtitle': 'أحدث المنتجات لأليفك', 'source': 'latest', 'limit': 10, 'view_all_text': 'عرض الكل', 'view_all_link': 'products'} %}
+  {% component 'home.cds-features' %}
+  {% component 'home.cds-visit-us' %}
 {% endblock %}
 {% block scripts %}
     <script defer src="{{ 'home.js' | asset }}"></script>
