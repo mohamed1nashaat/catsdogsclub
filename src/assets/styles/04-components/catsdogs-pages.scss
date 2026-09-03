@@ -1,0 +1,308 @@
+/* ==========================================================================
+   Cats & Dogs Club — inner pages (product / category / cart / misc)
+   --------------------------------------------------------------------------
+   Brand restyle for everything outside the homepage/header/footer:
+   - supplemental primary shades (the rest are set inline in master.twig)
+   - cream page background
+   - product page: title/price/options/buttons/rating/breadcrumbs/sticky bar
+   - category listing: toolbar, applied-filter chips, load-more button
+   - cart page: item rows, quantity stepper, coupon, summary, empty state
+   - shared bits reused by blog/brands/customer/loyalty/etc.
+   ========================================================================== */
+
+/* --- Supplemental brand shades (not set inline by master.twig) ----------- */
+:root {
+  --color-primary-d: #E05F00;  /* darker orange — hovers            */
+  --color-primary-l: #FF8A33;  /* lighter orange                    */
+}
+
+/* --- Page background: warm cream instead of cool gray -------------------- */
+body {
+  @apply bg-cream-bg text-deep-charcoal;
+}
+
+/* Form controls: brand focus + orange native accents */
+.form-input {
+  @apply focus:border-brand rounded-lg border-warm-sand/70 bg-white;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  accent-color: #FF6B00;
+}
+
+/* --- Breadcrumbs (inner pages; dark hero bands keep their own colors) ---- */
+.breadcrumbs {
+  .s-breadcrumb-wrapper {
+    @apply text-sm;
+  }
+
+  /* :where() keeps specificity below the primary-reverse/dark band rules */
+  :where(.s-breadcrumb-item) a {
+    @apply text-on-surface-variant no-underline transition-colors hover:text-brand;
+  }
+
+  :where(.s-breadcrumb-arrow) {
+    @apply text-warm-sand;
+  }
+}
+
+/* --- Buttons: outline variant in brand charcoal/orange ------------------- */
+.btn--outline-primary {
+  @apply border-deep-charcoal text-deep-charcoal bg-transparent hover:border-brand hover:bg-brand hover:text-white;
+}
+
+/* ==========================================================================
+   Product page (pages/product/single.twig)
+   ========================================================================== */
+.container--product-details {
+  /* Title */
+  h1[data-testid="store-product-title"] {
+    @apply text-deep-charcoal md:text-[28px] leading-snug;
+  }
+
+  .product-entry__sub-title {
+    @apply text-outline;
+  }
+
+  /* Price — brand orange everywhere it appears */
+  .total-price,
+  [data-testid="store-product-price"] p,
+  .price-wrapper h2 {
+    @apply text-brand #{!important};
+  }
+
+  /* Sale / before prices stay muted */
+  .before-price,
+  [data-testid="store-product-price"] .line-through,
+  .price-wrapper .line-through {
+    @apply text-outline #{!important};
+  }
+
+  /* Tags + read-more link */
+  .product__description a.link--primary,
+  #btn-show-more {
+    @apply text-brand font-bold hover:text-primary-d;
+  }
+
+  .product__description a {
+    @apply text-brand;
+  }
+
+  /* Availability + size-guide links */
+  .text-primary {
+    @apply text-brand;
+  }
+
+  /* Rating stars — brand orange */
+  salla-rating-stars {
+    --color-primary: #FF6B00;
+  }
+
+  .s-rating-stars-reviews {
+    @apply text-outline;
+  }
+
+  /* Description typography */
+  .article--main {
+    @apply text-on-surface-variant;
+
+    h1, h2, h3, h4 {
+      @apply text-deep-charcoal font-bold;
+    }
+
+    a {
+      @apply text-brand;
+    }
+  }
+
+  /* Favorite (wishlist) buttons */
+  .btn--wishlist {
+    .s-button-element {
+      @apply border-outline-variant/60 text-deep-charcoal transition-colors hover:border-brand hover:text-brand #{!important};
+    }
+
+    &.is-added .s-button-element {
+      @apply border-brand text-brand #{!important};
+    }
+  }
+
+  /* Variant/option sections */
+  .s-product-options-option-label,
+  .form-label {
+    @apply text-deep-charcoal;
+  }
+
+  .s-product-options-colors-item {
+    @apply rounded-full;
+  }
+
+  /* Add-to-cart — charcoal, orange on hover (notify-me keeps its gray) */
+  salla-add-product-button.sticky-product-bar__btn:not([product-status="out-and-notify"]) {
+    .s-button-solid.s-button-primary {
+      @apply bg-deep-charcoal text-white hover:bg-brand transition-colors duration-300 #{!important};
+    }
+  }
+
+  /* Sticky mobile bar */
+  @media (max-width: 640px) {
+    .sticky-product-bar {
+      @apply bg-warm-ivory border-t border-soft-cream;
+    }
+  }
+
+  /* SKU / barcode rows */
+  .product-sku,
+  .product-barcode {
+    @apply text-on-surface-variant;
+  }
+}
+
+/* ==========================================================================
+   Category / listing page (pages/product/index.twig)
+   ========================================================================== */
+.container--products-list {
+  /* Grid density: sidebar leaves less room than the homepage */
+  salla-products-list .s-products-list-vertical-cards {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 640px) {
+    salla-products-list .s-products-list-vertical-cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    salla-products-list .s-products-list-vertical-cards {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  /* Page title */
+  #page-main-title {
+    @apply text-deep-charcoal md:text-2xl;
+  }
+
+  /* Sort select */
+  #product-filter {
+    @apply cursor-pointer;
+  }
+
+  /* Mobile filters trigger */
+  .filters-trigger {
+    @apply inline-flex items-center justify-center bg-deep-charcoal text-white rounded-md w-10 h-10 hover:bg-brand transition-colors;
+  }
+
+  /* Load-more / pagination button — charcoal, orange on hover */
+  .s-infinite-scroll-btn.s-button-primary {
+    @apply bg-deep-charcoal text-white hover:bg-brand transition-colors duration-300 #{!important};
+  }
+}
+
+/* Filters sidebar + applied filter chips (salla-filters / salla-applied-filters) */
+.s-filters-label {
+  @apply text-deep-charcoal font-bold;
+}
+
+.s-applied-filters-tag {
+  @apply inline-flex items-center gap-1.5 bg-soft-cream border border-warm-sand/60 text-deep-charcoal text-xs font-bold rounded-full px-3 py-1.5;
+}
+
+.s-applied-filters-tag-remove {
+  @apply text-outline hover:text-brand transition-colors;
+}
+
+.s-applied-filters-clear-tag {
+  @apply text-brand text-xs font-bold hover:text-primary-d transition-colors;
+}
+
+/* ==========================================================================
+   Cart page (pages/cart.twig)
+   ========================================================================== */
+.cart-item {
+  @apply rounded-xl border border-outline-variant/30 shadow-sm;
+
+  h1 a {
+    @apply text-deep-charcoal font-bold hover:text-brand transition-colors;
+  }
+
+  .item-price,
+  .item-total,
+  .text-primary {
+    @apply text-brand;
+  }
+
+  .item-regular-price,
+  .item-original-price {
+    @apply text-outline;
+  }
+}
+
+/* Quantity stepper — product page + cart (component buttons use SVG fill) */
+.container--product-details,
+.cart-item {
+  .s-quantity-input-container {
+    @apply rounded-lg border-warm-sand/70 bg-white overflow-hidden;
+  }
+
+  .s-quantity-input-button {
+    @apply transition-colors hover:bg-soft-cream;
+    fill: #1A1A1A;
+
+    &:hover {
+      fill: #FF6B00;
+    }
+  }
+
+  .s-quantity-input-input {
+    @apply text-deep-charcoal font-bold border-x-warm-sand/70;
+  }
+}
+
+/* Free shipping progress bar */
+#free-shipping {
+  .sicon-shipping-fast.rounded-icon,
+  i.bg-primary {
+    @apply bg-brand text-white #{!important};
+  }
+
+  .progress-bg {
+    @apply bg-brand #{!important};
+  }
+}
+
+/* Coupon widget (input is a .form-input, covered above) */
+.s-cart-coupons-coupon-button-apply .s-button-primary {
+  @apply bg-deep-charcoal text-white hover:bg-brand transition-colors duration-300 #{!important};
+}
+
+/* Summary card / checkout button */
+#s-cart-summary-card-submit .s-button-primary {
+  @apply bg-deep-charcoal text-white hover:bg-brand transition-colors duration-300 #{!important};
+}
+
+/* Empty-cart state */
+.no-content-placeholder {
+  .icon {
+    @apply bg-soft-cream text-brand;
+  }
+
+  p {
+    @apply text-on-surface-variant;
+  }
+}
+
+/* ==========================================================================
+   Quick pass — blog / brands / customer / loyalty / single page
+   (backgrounds come from the body cream above; headings inherit the
+   deep-charcoal body color, links below get the brand orange)
+   ========================================================================== */
+
+/* Links that relied on the old primary */
+a.text-primary,
+.text-primary a {
+  @apply text-brand;
+}

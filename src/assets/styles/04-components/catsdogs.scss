@@ -93,7 +93,9 @@ body,
 }
 
 /* ==========================================================================
-   Product cards — homepage sections (.cds-products)
+   Product cards — homepage sections (.cds-products) + inner pages grids
+   (.container--products-list on category/brand/search listings and the
+   related-products slider on the product page).
    White card, soft-cream contain-fit image area, orange price,
    dark add-to-cart button.
    ========================================================================== */
@@ -116,6 +118,12 @@ body,
       grid-template-columns: repeat(5, minmax(0, 1fr));
     }
   }
+}
+
+/* Card look shared by homepage sections and inner-page product grids */
+.cds-products,
+.container--products-list,
+[data-testid="store-product-related"] {
 
   .s-product-card-vertical {
     .s-product-card-entry {
