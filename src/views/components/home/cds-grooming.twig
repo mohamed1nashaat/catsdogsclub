@@ -17,11 +17,11 @@
   <span class="material-symbols-outlined cds-decor-icon !text-brand/20" style="bottom: 10%; right: 40%; font-size: 32px; transform: rotate(-10deg);">pets</span>
   <span class="material-symbols-outlined cds-decor-icon !text-brand/20" style="top: 30%; right: 30%; font-size: 24px; transform: rotate(45deg);">spa</span>
   <span class="material-symbols-outlined cds-decor-icon !text-brand/20" style="bottom: 20%; right: 20%; font-size: 40px; transform: rotate(-20deg);">pets</span>
-  {# Gradient fallback stays behind; optional background image overlays it when set. #}
-  <div class="absolute inset-0 bg-gradient-to-l from-[#2a2a2a] via-deep-charcoal/90 to-deep-charcoal z-0 w-full md:w-2/3"></div>
+  {# Gradient overlay sits on top of the optional background image so text stays readable. #}
+  <div class="absolute inset-0 bg-gradient-to-l from-deep-charcoal/90 via-deep-charcoal/60 to-transparent z-10"></div>
   {% if background.url %}
     {% set bg_img = background.url matches '~^https?://~' ? background.url : background.url|asset %}
-    <img src="{{ bg_img }}" alt="" aria-hidden="true" class="absolute inset-0 w-full md:w-2/3 h-full object-cover z-0 opacity-40" loading="lazy">
+    <img src="{{ bg_img }}" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover z-0" loading="lazy">
   {% endif %}
   {% set cta_href = cta_link starts with 'http' ? cta_link : link(cta_link|default('products')) %}
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-20 flex flex-col md:flex-row items-center md:justify-end">
@@ -32,7 +32,7 @@
       <h2 class="text-headline-lg md:text-headline-display mb-2 text-right w-full">{{ title }}</h2>
       <p class="text-headline-md text-warm-sand mb-6 text-right w-full">{{ subtitle }}</p>
       <p class="text-body-lg text-surface-container-high mb-8 max-w-md text-right w-full">{{ description }}</p>
-      <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+      <div class="flex flex-col sm:flex-row-reverse gap-4 w-full sm:w-auto">
         <a href="{{ cta_href }}" class="bg-transparent border-2 border-brand text-brand px-8 py-3 rounded-md hover:bg-brand hover:text-white transition-colors duration-300 text-label-sm font-bold text-center">{{ cta_text }}</a>
         <a href="https://wa.me/{{ whatsapp }}" target="_blank" rel="noopener" class="bg-whatsapp text-white px-8 py-3 rounded-md hover:bg-whatsapp-dark transition-colors duration-300 text-label-sm flex items-center justify-center gap-2 font-bold">
           تواصل عبر واتساب {{ whatsapp_svg | raw }}

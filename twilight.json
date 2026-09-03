@@ -1143,6 +1143,71 @@
             ]
         },
         {
+            "key": "b6519883-c347-4c5f-ad3e-dcee88fa223f",
+            "title": {
+                "en": "Announcement Bar",
+                "ar": "شريط الإعلانات العلوي"
+            },
+            "icon": "sicon-megaphone",
+            "path": "home.cds-announcement",
+            "is_default": true,
+            "fields": [
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 3,
+                    "label": "رسائل الشريط",
+                    "item_label": "رسالة",
+                    "value": [
+                        {
+                            "items.text": "عروض حصرية كل أسبوع",
+                            "items.icon": "redeem"
+                        },
+                        {
+                            "items.text": "تسوّق منتجات القطط والكلاب",
+                            "items.icon": "pets"
+                        },
+                        {
+                            "items.text": "اكتشف باقات العناية",
+                            "items.icon": "spa"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "النص",
+                            "multilanguage": true,
+                            "id": "items.text",
+                            "value": null,
+                            "required": true,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 255
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "أيقونة Material Symbols",
+                            "id": "items.icon",
+                            "value": "redeem",
+                            "required": false,
+                            "format": "text",
+                            "description": "مثال: redeem, pets, spa, local_offer",
+                            "placeholder": "redeem",
+                            "minLength": 0,
+                            "maxLength": 100
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "key": "95d8904c-08ed-4b15-93c0-f03455f94ac9",
             "title": {
                 "en": "Hero Banner (Cats & Dogs)",

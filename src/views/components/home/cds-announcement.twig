@@ -1,0 +1,18 @@
+{#
+| Variable    | Type    | Description                                                |
+|-------------|---------|------------------------------------------------------------|
+| items       | array   | Announcement messages (up to 3)                            |
+| items[].text| string  | Message text                                               |
+| items[].icon| string  | Material Symbols icon name                                 |
+| componentId | string  | Component id                                               |
+| #}
+<section component-id="{{ componentId }}" class="bg-deep-charcoal text-warm-ivory py-2 px-margin-mobile md:px-margin-desktop text-center text-label-sm font-label-sm flex justify-between items-center hidden md:flex">
+  {% for item in items %}
+    <span class="flex items-center gap-1">
+      {{ item.text }}
+      {% if item.icon %}
+        <span class="material-symbols-outlined align-middle text-brand" style="font-size: 16px;">{{ item.icon }}</span>
+      {% endif %}
+    </span>
+  {% endfor %}
+</section>

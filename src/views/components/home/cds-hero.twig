@@ -54,20 +54,20 @@
 
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20 flex flex-col md:flex-row items-center gap-12 relative z-10">
     <div class="md:w-1/2 flex flex-col items-start">
-      <div class="inline-block bg-white/20 text-deep-charcoal px-4 py-1 rounded-full text-label-sm mb-6 font-bold backdrop-blur-sm">{{ badge }}</div>
+      <div class="inline-block bg-white/20 text-deep-charcoal px-4 py-1 rounded-full text-label-sm mb-6 font-bold backdrop-blur-sm mr-auto">{{ badge }}</div>
       <h1 class="text-headline-lg md:text-headline-display text-deep-charcoal mb-6 font-extrabold text-right w-full">
         {{ title_line1 }}<br>
         <span class="text-white drop-shadow-sm">{{ title_line2 }}</span>
       </h1>
-      <p class="text-body-lg text-deep-charcoal/80 mb-10 max-w-lg font-medium text-right w-full">
+      <p class="text-body-lg text-deep-charcoal/80 mb-10 max-w-lg font-medium mr-auto text-right w-full">
         {{ subtitle }}
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-        <a href="{{ cta1_href }}" class="bg-deep-charcoal text-white px-10 py-4 rounded-md hover:bg-black transition-colors duration-300 text-lg font-bold flex items-center justify-center gap-2 shadow-lg">
+      <div class="flex flex-col sm:flex-row gap-4 justify-start w-full">
+        <a href="{{ cta1_href }}" class="bg-deep-charcoal text-white px-10 py-4 rounded-md hover:bg-black transition-colors duration-300 font-label-sm text-lg font-bold flex items-center justify-center gap-2 shadow-lg">
           {{ cta1_text }} <span class="material-symbols-outlined">shopping_cart</span>
         </a>
         {# Grooming packages live on the storefront products page until a dedicated page is created #}
-        <a href="{{ cta2_href }}" class="bg-transparent border-2 border-deep-charcoal text-deep-charcoal px-8 py-4 rounded-md hover:bg-deep-charcoal hover:text-white transition-colors duration-300 text-lg font-bold flex items-center justify-center gap-2">
+        <a href="{{ cta2_href }}" class="bg-transparent border-2 border-deep-charcoal text-deep-charcoal px-8 py-4 rounded-md hover:bg-deep-charcoal hover:text-white transition-colors duration-300 font-label-sm text-lg font-bold flex items-center justify-center gap-2">
           {{ cta2_text }} <span class="material-symbols-outlined">spa</span>
         </a>
       </div>
