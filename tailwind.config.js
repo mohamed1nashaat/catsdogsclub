@@ -15,11 +15,17 @@ module.exports = {
         },
         fontFamily: {
             sans: [
+                'IBM Plex Sans Arabic',
                 'var(--font-main)',
                 '-apple-system',
                 'BlinkMacSystemFont',
             ],
-            primary: "var(--font-main)"
+            primary: "var(--font-main)",
+            plex: [
+                'IBM Plex Sans Arabic',
+                'var(--font-main)',
+                'sans-serif',
+            ]
         },
         extend    : {
             transitionTimingFunction: {
@@ -36,7 +42,43 @@ module.exports = {
                 'primary-d'       : 'var(--color-primary-dark)',
                 'primary-l'       : 'var(--color-primary-light)',
                 'primary-reverse' : 'var(--color-primary-reverse)',
-                'primary-dark' : 'var(--color-primary-dark)'
+                'primary-dark' : 'var(--color-primary-dark)',
+                /* Cats & Dogs Club design tokens */
+                'brand'                : '#FF6B00', // energetic-orange
+                'deep-charcoal'        : '#1A1A1A',
+                'soft-cream'           : '#F5F2EA',
+                'warm-ivory'           : '#FDFCF8',
+                'warm-sand'            : '#D9D1C1',
+                'cream-bg'             : '#fdf9f0',
+                'brand-error'          : '#ba1a1a',
+                'whatsapp'             : '#25D366',
+                'whatsapp-dark'        : '#1DA851',
+                'outline'              : '#747878',
+                'on-surface-variant'   : '#444748',
+                'surface-container'    : '#f2ede4',
+                'surface-container-high': '#ece8df',
+                'outline-variant'      : '#c4c7c7',
+            },
+            fontSize           : {
+                'icon-lg'   : '33px',
+                'xxs'       : '10px',
+                'xxxs'      : '8px',
+                'title-size': '42px',
+                '22px'      : '22px',
+                /* Display type scale */
+                'headline-display': ['56px', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '800' }],
+                'headline-lg'     : ['36px', { lineHeight: '1.2', fontWeight: '800' }],
+                'headline-md'     : ['28px', { lineHeight: '1.3', fontWeight: '700' }],
+                'body-lg'         : ['18px', { lineHeight: '1.6' }],
+                'body-md'         : ['16px', { lineHeight: '1.6' }],
+                'label-sm'        : ['14px', { lineHeight: '1.2', letterSpacing: '0.05em', fontWeight: '500' }],
+                'label-xs'        : ['12px', { lineHeight: '1.2', fontWeight: '600' }],
+            },
+            borderRadius       : {
+                'large': '22px',
+                'big'  : '40px',
+                'tiny' : '3px',
+                DEFAULT: '.75rem',
             },
             spacing: {
               '3.75': '15px',
@@ -47,19 +89,10 @@ module.exports = {
               '116' : '464px',
               '132' : '528px',
               '200' : '800px',
-            },
-            borderRadius       : {
-                'large': '22px',
-                'big'  : '40px',
-                'tiny' : '3px',
-                DEFAULT: '.75rem',
-            },
-            fontSize           : {
-                'icon-lg'   : '33px',
-                'xxs'       : '10px',
-                'xxxs'      : '8px',
-                'title-size': '42px',
-                '22px'      : '22px',
+              /* Design spacing tokens */
+              'margin-desktop': '64px',
+              'margin-mobile' : '20px',
+              'gutter'        : '24px',
             },
             lineHeight         : {
                 '12': '3rem',
@@ -101,6 +134,7 @@ module.exports = {
                 '1/4': '25%',
                 '1/2': '50%',
                 '3/4': '75%',
+                'container-max': '1280px',
             },
             zIndex             : {
                 '1': '1',

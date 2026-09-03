@@ -1,0 +1,189 @@
+/* ==========================================================================
+   Cats & Dogs Club — custom homepage/header/footer styles (Stitch design)
+   --------------------------------------------------------------------------
+   - Material Symbols base classes (font loaded in master.twig)
+   - Header menu + cart badge styling on top of the Salla web components
+   - Homepage product card overrides to match the approved product card design
+   ========================================================================== */
+
+/* --- Material Symbols (decorative icons, loaded via Google Fonts) -------- */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.fill-icon {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Soft beige decorative icon, absolutely positioned by inline styles */
+.cds-decor-icon {
+  @apply absolute pointer-events-none text-[#f5f5dc] opacity-15 z-0;
+}
+
+/* --- Base font: IBM Plex Sans Arabic (RTL Arabic store) ------------------ */
+body,
+.theme-raed {
+  font-family: 'IBM Plex Sans Arabic', var(--font-main), -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* --- Header: main menu (custom-main-menu light DOM) ---------------------- */
+.cds-header__menu {
+  .main-menu {
+    @apply mx-0 pt-0 pb-0 flex-nowrap;
+  }
+
+  .main-menu li > a {
+    @apply text-on-surface-variant hover:text-brand no-underline;
+  }
+
+  .main-menu li.root-level {
+    @apply inline-block;
+
+    > a {
+      @apply pb-0 pt-0 text-[14px] font-bold tracking-[0.05em] text-on-surface-variant hover:text-brand transition-colors duration-200;
+    }
+  }
+}
+
+/* --- Header: cart badge + hide label/total ------------------------------- */
+.cds-header__cart {
+  @apply relative text-deep-charcoal hover:text-brand transition-all cursor-pointer leading-none;
+
+  .s-cart-summary-wrapper {
+    @apply flex items-center;
+  }
+
+  .s-cart-summary-count {
+    @apply absolute -top-1 -end-1 bg-brand text-white text-[12px] leading-none w-5 h-5 rounded-full flex items-center justify-center font-bold;
+  }
+
+  .s-cart-summary-label,
+  .s-cart-summary-total {
+    @apply hidden;
+  }
+}
+
+/* --- Header: account trigger keeps header colors ------------------------- */
+.cds-header salla-user-menu {
+  @apply text-deep-charcoal hover:text-brand transition-all cursor-pointer leading-none;
+}
+
+/* --- Footer: salla-menu links inside the dark footer --------------------- */
+.cds-footer__menu {
+  ul {
+    @apply flex flex-col gap-2;
+  }
+
+  li a {
+    @apply text-warm-sand hover:text-warm-ivory transition-colors text-label-xs no-underline p-0;
+  }
+}
+
+/* ==========================================================================
+   Product cards — homepage sections (.cds-products)
+   White card, soft-cream contain-fit image area, orange price,
+   dark add-to-cart button.
+   ========================================================================== */
+.cds-products {
+  /* 5 columns desktop like the design grid */
+  salla-products-list .s-products-list-vertical-cards {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 640px) {
+    salla-products-list .s-products-list-vertical-cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    salla-products-list .s-products-list-vertical-cards {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+
+  .s-product-card-vertical {
+    .s-product-card-entry {
+      @apply bg-white rounded-xl border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full overflow-hidden;
+    }
+
+    .s-product-card-image {
+      @apply bg-soft-cream rounded-lg overflow-hidden m-4 mb-4 aspect-square shrink-0;
+      flex: unset;
+
+      a {
+        @apply w-full h-full flex items-center justify-center;
+      }
+
+      img {
+        @apply object-contain mix-blend-multiply w-full h-full transition-transform duration-300 scale-110 hover:scale-100;
+      }
+    }
+
+    .s-product-card-content {
+      @apply flex flex-col flex-1 p-4 pt-0;
+    }
+
+    .s-product-card-content-title {
+      @apply mb-1 leading-snug;
+
+      a {
+        @apply block text-base font-bold text-deep-charcoal line-clamp-2 hover:text-brand;
+      }
+    }
+
+    .s-product-card-content-subtitle {
+      @apply text-[11px] text-outline mb-4 leading-snug;
+    }
+
+    .s-product-card-content-footer {
+      @apply flex justify-between items-end mt-auto pt-2;
+    }
+
+    /* Prices */
+    .s-product-card-price,
+    .s-product-card-sale-price h4,
+    .s-product-card-starting-price h4 {
+      @apply text-2xl font-bold text-brand inline-block;
+    }
+
+    .s-product-card-sale-price span {
+      @apply text-xs text-outline line-through;
+    }
+
+    /* Discount / promotion badge */
+    .s-product-card-promotion-title {
+      @apply bg-brand-error text-white text-[10px] font-bold px-2 py-1 rounded top-4 start-4 end-auto #{!important};
+    }
+
+    /* Wishlist heart — top corner over the image */
+    .s-product-card-wishlist-btn {
+      @apply absolute top-4 end-4 z-10 opacity-100;
+
+      button {
+        @apply bg-transparent m-0 text-outline hover:text-brand transition-colors;
+        background: transparent #{!important};
+      }
+    }
+
+    /* Add-to-cart button: dark charcoal, orange on hover */
+    .s-product-card-content-footer salla-button button {
+      @apply bg-deep-charcoal text-white rounded-md px-4 py-2 text-[12px] font-bold flex items-center gap-2 hover:bg-brand transition-colors duration-300 #{!important};
+    }
+  }
+}
