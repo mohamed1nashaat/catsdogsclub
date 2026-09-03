@@ -1,0 +1,22 @@
+{#
+| Variable        | Type     | Description                                           |
+|-----------------|----------|-------------------------------------------------------|
+| features        | array    | List of 4 feature highlights                          |
+| features[].icon | string   | Material Symbols icon name                            |
+| features[].text | string   | Feature text                                          |
+| componentId     | string   | Component id                                          |
+#}
+<section component-id="{{ componentId }}" class="py-12 bg-warm-ivory border-b border-outline-variant/20 relative overflow-hidden">
+  <span class="material-symbols-outlined cds-decor-icon !text-outline-variant/10" style="top: 20%; left: 5%; font-size: 24px; transform: rotate(-15deg);">pets</span>
+  <span class="material-symbols-outlined cds-decor-icon !text-outline-variant/10" style="top: 40%; right: 15%; font-size: 32px; transform: rotate(10deg);">bone</span>
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      {% for feature in features %}
+        <div class="flex flex-col items-center gap-3">
+          <span class="material-symbols-outlined text-brand text-4xl">{{ feature.icon }}</span>
+          <h4 class="text-headline-md font-bold text-deep-charcoal">{{ feature.text }}</h4>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

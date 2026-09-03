@@ -1,0 +1,26 @@
+{#
+| Variable      | Type    | Description                                                 |
+|---------------|---------|-------------------------------------------------------------|
+| title         | string  | Section title                                               |
+| subtitle      | string  | Section subtitle                                            |
+| source        | string  | Products source: "sales" or "latest"                        |
+| limit         | int     | Number of products                                          |
+| view_all_text | string  | "View all" link label                                       |
+| view_all_link | string  | "View all" link target (route name or URL)                  |
+| componentId   | string  | Component id                                                |
+#}
+{% set view_all_href = view_all_link starts with 'http' ? view_all_link : link(view_all_link|default('products')) %}
+<section component-id="{{ componentId }}" class="py-12 bg-cream-bg relative overflow-hidden cds-products">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+    <div class="flex justify-between items-end mb-8">
+      <div>
+        <h2 class="text-headline-lg text-deep-charcoal mb-2">{{ title }}</h2>
+        <p class="text-body-md text-on-surface-variant">{{ subtitle }}</p>
+      </div>
+      <a class="text-brand text-label-sm font-bold flex items-center gap-1 hover:gap-2 transition-all" href="{{ view_all_href }}">
+        {{ view_all_text }} <span class="material-symbols-outlined text-sm">arrow_back</span>
+      </a>
+    </div>
+    <salla-products-list source="{{ source|default('sales') }}" limit="{{ limit|default(10) }}" shadow-on-hover></salla-products-list>
+  </div>
+</section>

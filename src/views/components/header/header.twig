@@ -23,7 +23,7 @@
           <span class="material-symbols-outlined text-3xl">menu</span>
         </a>
         <a data-testid="store-header-logo" href="{{ store.url }}" class="flex items-center">
-          <img fetchpriority="high" width="312" height="218" class="h-10 w-auto" src="{{ 'images/logo.png' | asset }}" alt="{{ store.name }} logo">
+          <img fetchpriority="high" width="312" height="218" class="h-10 w-auto" src="{{ store.logo ? store.logo|cdn(175) : 'images/logo.png'|asset }}" alt="{{ store.name }} logo">
           {% if is_page('index') %}
             <h1 class="sr-only">{{ store.name }}</h1>
           {% else %}
@@ -52,6 +52,11 @@
 
         {# Account #}
         <salla-user-menu data-testid="store-header-user-menu" avatar-only show-trigger></salla-user-menu>
+
+        {# Language & Currency #}
+        {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+          <salla-localization-modal data-testid="store-header-localization" show-trigger></salla-localization-modal>
+        {% endif %}
 
         {# WhatsApp #}
         <a class="hidden md:flex text-whatsapp hover:text-whatsapp-dark transition-all items-center" href="https://wa.me/966544416547" target="_blank" rel="noopener" aria-label="واتساب">

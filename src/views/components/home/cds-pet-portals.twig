@@ -1,0 +1,28 @@
+{#
+| Variable       | Type     | Description                                             |
+|----------------|----------|---------------------------------------------------------|
+| portals        | array    | List of 2 pet portals                                   |
+| portals[].image.url | string | Portal background image                            |
+| portals[].title | string  | Portal title                                            |
+| portals[].url  | string   | Portal link (route name or URL)                         |
+| componentId    | string   | Component id                                            |
+#}
+<section component-id="{{ componentId }}" class="py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {% for portal in portals %}
+      {% set portal_href = portal.url starts with 'http' ? portal.url : link(portal.url|default('categories')) %}
+      {% set portal_img = portal.image.url matches '~^https?://~' ? portal.image.url : portal.image.url|asset %}
+      <a class="group relative rounded-xl overflow-hidden block aspect-[16/9] shadow-sm hover:shadow-lg transition-shadow duration-300" href="{{ portal_href }}">
+        <div class="absolute inset-0 bg-gradient-to-t from-deep-charcoal/80 to-transparent z-10"></div>
+        <img src="{{ portal_img }}" alt="{{ portal.title }}"
+             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+        <div class="absolute bottom-0 right-0 p-8 z-20 w-full flex justify-between items-end">
+          <span class="bg-brand text-white w-10 h-10 rounded-full flex items-center justify-center transform group-hover:-translate-x-2 transition-transform">
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </span>
+          <h2 class="text-headline-lg text-warm-ivory">{{ portal.title }}</h2>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>

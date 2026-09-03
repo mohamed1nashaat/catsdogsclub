@@ -1128,6 +1128,904 @@
                     "maxLength": 30
                 }
             ]
+        },
+        {
+            "key": "95d8904c-08ed-4b15-93c0-f03455f94ac9",
+            "title": {
+                "en": "Hero Banner (Cats & Dogs)",
+                "ar": "البانر الرئيسي"
+            },
+            "icon": "sicon-image-carousel",
+            "path": "home.cds-hero",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "الشارة التعريفية",
+                    "multilanguage": true,
+                    "id": "badge",
+                    "value": "متجر للقطط والكلاب في جدة",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان — السطر الأول",
+                    "multilanguage": true,
+                    "id": "title_line1",
+                    "value": "كل احتياجات أليفك",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان — السطر الثاني",
+                    "multilanguage": true,
+                    "id": "title_line2",
+                    "value": "في مكان واحد",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "النص التوضيحي",
+                    "multilanguage": true,
+                    "id": "subtitle",
+                    "value": "تسوّق منتجات مختارة للقطط والكلاب، واكتشف باقات العناية من Cats & Dogs Club.",
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص الزر الرئيسي",
+                    "multilanguage": true,
+                    "id": "cta1_text",
+                    "value": "تسوّق الآن",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر الرئيسي",
+                    "multilanguage": true,
+                    "id": "cta1_link",
+                    "value": "products",
+                    "required": false,
+                    "format": "text",
+                    "description": "اسم مسار داخلي (مثل products) أو رابط كامل يبدأ بـ http",
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص الزر الثانوي",
+                    "multilanguage": true,
+                    "id": "cta2_text",
+                    "value": "استكشف باقات العناية",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر الثانوي",
+                    "multilanguage": true,
+                    "id": "cta2_link",
+                    "value": "products",
+                    "required": false,
+                    "format": "text",
+                    "description": "اسم مسار داخلي (مثل products) أو رابط كامل يبدأ بـ http",
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "value": "images/hero-dog-cat.jpg",
+                    "label": "صورة البانر",
+                    "id": "image",
+                    "format": "image",
+                    "required": false,
+                    "placeholder": null,
+                    "description": "* المقاس المناسب للصورة هو 1024×1024 بكسل"
+                }
+            ]
+        },
+        {
+            "key": "e345936d-8864-46ef-b58a-d0537f9806f4",
+            "title": {
+                "en": "Pet Portals",
+                "ar": "بوابات التسوق حسب الأليف"
+            },
+            "icon": "sicon-image",
+            "path": "home.cds-pet-portals",
+            "is_default": true,
+            "fields": [
+                {
+                    "id": "portals",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 2,
+                    "label": "قائمة البوابات",
+                    "item_label": "بوابة",
+                    "value": [
+                        {
+                            "portals.image": "images/portal-cats.jpg",
+                            "portals.title": "للقطط",
+                            "portals.url": "categories"
+                        },
+                        {
+                            "portals.image": "images/hero-dog-cat.jpg",
+                            "portals.title": "للكلاب",
+                            "portals.url": "categories"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "label": "صورة البوابة",
+                            "id": "portals.image",
+                            "format": "image",
+                            "required": false,
+                            "placeholder": null,
+                            "description": "* المقاس المناسب للصورة هو 1600×900 بكسل"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "عنوان البوابة",
+                            "multilanguage": true,
+                            "id": "portals.title",
+                            "value": null,
+                            "required": true,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 255
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-link",
+                            "label": "رابط البوابة",
+                            "multilanguage": true,
+                            "id": "portals.url",
+                            "value": "categories",
+                            "required": false,
+                            "format": "text",
+                            "description": "اسم مسار داخلي (مثل categories) أو رابط كامل يبدأ بـ http",
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 255
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "355435c3-b09a-4b97-a6a5-c0aa429ff49c",
+            "title": {
+                "en": "Grooming Feature",
+                "ar": "قسم العناية بالأليف"
+            },
+            "icon": "sicon-list-play",
+            "path": "home.cds-grooming",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان الرئيسي",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "عناية متكاملة",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان الفرعي",
+                    "multilanguage": true,
+                    "id": "subtitle",
+                    "value": "نظافة، راحة، أناقة",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "الوصف",
+                    "multilanguage": true,
+                    "id": "description",
+                    "value": "نوفر خدمات عناية احترافية في بيئة مريحة لأليفك. فريقنا المتخصص يهتم بأدق التفاصيل لضمان تجربة فاخرة.",
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص زر الباقات",
+                    "multilanguage": true,
+                    "id": "cta_text",
+                    "value": "استكشف باقات العناية",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "label": "رابط زر الباقات",
+                    "multilanguage": true,
+                    "id": "cta_link",
+                    "value": "products",
+                    "required": false,
+                    "format": "text",
+                    "description": "اسم مسار داخلي (مثل products) أو رابط كامل يبدأ بـ http",
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-chat-bubbles",
+                    "label": "رقم الواتساب",
+                    "multilanguage": true,
+                    "id": "whatsapp",
+                    "value": "966544416547",
+                    "required": false,
+                    "format": "text",
+                    "description": "أرقام فقط بدون علامة +",
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "value": null,
+                    "label": "صورة الخلفية (اختياري)",
+                    "id": "background",
+                    "format": "image",
+                    "required": false,
+                    "placeholder": null,
+                    "description": "عند تركها فارغة يظهر التدرج اللوني الداكن الافتراضي"
+                }
+            ]
+        },
+        {
+            "key": "eb65ab41-5f82-4405-ab1d-159bd7c81b2f",
+            "title": {
+                "en": "Shop by Category",
+                "ar": "التسوق حسب الفئة"
+            },
+            "icon": "sicon-layout-grid-rearrange",
+            "path": "home.cds-categories",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "تسوّق حسب الفئة",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "id": "categories",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 8,
+                    "label": "قائمة الفئات",
+                    "item_label": "فئة",
+                    "value": [
+                        {
+                            "categories.image": "images/category-food.jpg",
+                            "categories.title": "الطعام",
+                            "categories.url": "categories"
+                        },
+                        {
+                            "categories.image": "images/category-treats.jpg",
+                            "categories.title": "المكافآت",
+                            "categories.url": "categories"
+                        },
+                        {
+                            "categories.image": "images/category-grooming.jpg",
+                            "categories.title": "العناية والنظافة",
+                            "categories.url": "categories"
+                        },
+                        {
+                            "categories.image": "images/category-toys.jpg",
+                            "categories.title": "الألعاب",
+                            "categories.url": "categories"
+                        },
+                        {
+                            "categories.image": "images/category-accessories.jpg",
+                            "categories.title": "الإكسسوارات",
+                            "categories.url": "categories"
+                        },
+                        {
+                            "categories.image": "images/category-walking.jpg",
+                            "categories.title": "مستلزمات المشي",
+                            "categories.url": "categories"
+                        },
+                        {
+                            "categories.image": "images/category-travel.jpg",
+                            "categories.title": "السفر",
+                            "categories.url": "categories"
+                        },
+                        {
+                            "categories.image": "images/category-home.jpg",
+                            "categories.title": "المنزل",
+                            "categories.url": "categories"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "label": "صورة الفئة",
+                            "id": "categories.image",
+                            "format": "image",
+                            "required": false,
+                            "placeholder": null,
+                            "description": "* المقاس المناسب للصورة هو 600×600 بكسل"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "اسم الفئة",
+                            "multilanguage": true,
+                            "id": "categories.title",
+                            "value": null,
+                            "required": true,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 255
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-link",
+                            "label": "رابط الفئة",
+                            "multilanguage": true,
+                            "id": "categories.url",
+                            "value": "categories",
+                            "required": false,
+                            "format": "text",
+                            "description": "اسم مسار داخلي (مثل categories) أو رابط كامل يبدأ بـ http",
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 255
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "1e0a03ee-4548-45ed-bb41-6e2b9c0751c1",
+            "title": {
+                "en": "Products List (Best Sellers / New Arrivals)",
+                "ar": "قائمة منتجات"
+            },
+            "icon": "sicon-award-ribbon",
+            "path": "home.cds-products",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "الأكثر طلبًا",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "النص التوضيحي",
+                    "multilanguage": true,
+                    "id": "subtitle",
+                    "value": "اختيارات يحبها أصحاب القطط والكلاب",
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "id": "source",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "مصدر المنتجات",
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [
+                        {
+                            "label": "الأكثر مبيعًا",
+                            "value": "sales",
+                            "key": "a1b2c3d4-0001-4abc-8def-111111111111"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "الأكثر مبيعًا",
+                            "value": "sales",
+                            "key": "a1b2c3d4-0001-4abc-8def-111111111111"
+                        },
+                        {
+                            "label": "أحدث المنتجات",
+                            "value": "latest",
+                            "key": "a1b2c3d4-0002-4abc-8def-222222222222"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "type": "number",
+                    "format": "integer",
+                    "label": "عدد المنتجات",
+                    "description": null,
+                    "id": "limit",
+                    "labelHTML": null,
+                    "placeholder": "10",
+                    "icon": "sicon-pencil-ruler",
+                    "value": 10,
+                    "required": false,
+                    "minimum": 1,
+                    "maximum": 50
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص زر عرض الكل",
+                    "multilanguage": true,
+                    "id": "view_all_text",
+                    "value": "عرض الكل",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "label": "رابط عرض الكل",
+                    "multilanguage": true,
+                    "id": "view_all_link",
+                    "value": "products",
+                    "required": false,
+                    "format": "text",
+                    "description": "اسم مسار داخلي (مثل products) أو رابط كامل يبدأ بـ http",
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                }
+            ]
+        },
+        {
+            "key": "d1d52fbf-0d0e-482c-bb0e-eae7d22f83a4",
+            "title": {
+                "en": "Promo Banner",
+                "ar": "بانر العروض"
+            },
+            "icon": "sicon-image",
+            "path": "home.cds-promo-banner",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "دلّع أليفك أكثر",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "النص",
+                    "multilanguage": true,
+                    "id": "text",
+                    "value": "اكتشف تشكيلتنا الجديدة من الألعاب والأسرة الفاخرة بأسعار مميزة.",
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص الزر",
+                    "multilanguage": true,
+                    "id": "cta_text",
+                    "value": "اكتشف العروض",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر",
+                    "multilanguage": true,
+                    "id": "cta_link",
+                    "value": "offers",
+                    "required": false,
+                    "format": "text",
+                    "description": "اسم مسار داخلي (مثل offers) أو رابط كامل يبدأ بـ http",
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "value": "images/promo-cat-bed.jpg",
+                    "label": "الصورة الجانبية",
+                    "id": "image",
+                    "format": "image",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null
+                }
+            ]
+        },
+        {
+            "key": "e8bf2ce3-9760-4d4f-af2e-644d23280721",
+            "title": {
+                "en": "Brand Logos",
+                "ar": "شعارات الماركات"
+            },
+            "icon": "sicon-award-ribbon",
+            "path": "home.cds-brands",
+            "is_default": true,
+            "fields": [
+                {
+                    "id": "brands",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 12,
+                    "label": "قائمة الماركات",
+                    "item_label": "ماركة",
+                    "value": [
+                        {
+                            "brands.image": "images/brand-royal-canin.png",
+                            "brands.name": "Royal Canin",
+                            "brands.url": "brands"
+                        },
+                        {
+                            "brands.image": "images/brand-whiskas.png",
+                            "brands.name": "Whiskas",
+                            "brands.url": "brands"
+                        },
+                        {
+                            "brands.image": "images/brand-purina.png",
+                            "brands.name": "Purina",
+                            "brands.url": "brands"
+                        },
+                        {
+                            "brands.image": "images/brand-orijen.png",
+                            "brands.name": "Orijen",
+                            "brands.url": "brands"
+                        },
+                        {
+                            "brands.image": "images/brand-hills.png",
+                            "brands.name": "Hill's",
+                            "brands.url": "brands"
+                        },
+                        {
+                            "brands.image": "images/brand-acana.png",
+                            "brands.name": "Acana",
+                            "brands.url": "brands"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "label": "شعار الماركة",
+                            "id": "brands.image",
+                            "format": "image",
+                            "required": false,
+                            "placeholder": null,
+                            "description": null
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "اسم الماركة",
+                            "multilanguage": true,
+                            "id": "brands.name",
+                            "value": null,
+                            "required": true,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 255
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-link",
+                            "label": "رابط الماركة",
+                            "multilanguage": true,
+                            "id": "brands.url",
+                            "value": "brands",
+                            "required": false,
+                            "format": "text",
+                            "description": "اسم مسار داخلي (مثل brands) أو رابط كامل يبدأ بـ http",
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 255
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "f1bfd89c-b8f0-4832-951b-e6150e0db875",
+            "title": {
+                "en": "Store Features",
+                "ar": "مميزات المتجر"
+            },
+            "icon": "sicon-chat-bubbles",
+            "path": "home.cds-features",
+            "is_default": true,
+            "fields": [
+                {
+                    "id": "features",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 4,
+                    "maxLength": 4,
+                    "label": "قائمة المميزات",
+                    "item_label": "ميزة",
+                    "value": [
+                        {
+                            "features.icon": "storefront",
+                            "features.text": "متجر وعناية في مكان واحد"
+                        },
+                        {
+                            "features.icon": "pets",
+                            "features.text": "للقطط والكلاب"
+                        },
+                        {
+                            "features.icon": "location_on",
+                            "features.text": "متجر فعلي في جدة"
+                        },
+                        {
+                            "features.icon": "shopping_cart_checkout",
+                            "features.text": "تجربة تسوق سهلة"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "اسم الأيقونة (Material Symbols)",
+                            "multilanguage": true,
+                            "id": "features.icon",
+                            "value": "storefront",
+                            "required": false,
+                            "format": "text",
+                            "description": "مثال: storefront — pets — location_on",
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 255
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "نص الميزة",
+                            "multilanguage": true,
+                            "id": "features.text",
+                            "value": null,
+                            "required": true,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 255
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "95e273b5-a1c0-42e1-bfd8-d51af45f637b",
+            "title": {
+                "en": "Visit Us",
+                "ar": "قسم زورونا"
+            },
+            "icon": "sicon-layout-grid-rearrange",
+            "path": "home.cds-visit-us",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "زورونا في جدة",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "النص",
+                    "multilanguage": true,
+                    "id": "text",
+                    "value": "نستقبلكم في فرعنا لتجربة تسوق ممتعة مع أليفك، واكتشاف خدمات العناية المتكاملة.",
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "address",
+                    "value": "شارع الكيال، جدة 23434، المملكة العربية السعودية",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "ساعات العمل",
+                    "multilanguage": true,
+                    "id": "hours",
+                    "value": "يوميًا: 12 م – 12 ص",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "label": "رابط الخريطة",
+                    "multilanguage": true,
+                    "id": "map_link",
+                    "value": "https://www.google.com/maps/search/?api=1&query=%D8%B4%D8%A7%D8%B1%D8%B9%20%D8%A7%D9%84%D9%83%D9%8A%D8%A7%D9%84%20%D8%AC%D8%AF%D8%A9%2023434",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-chat-bubbles",
+                    "label": "رقم الواتساب",
+                    "multilanguage": true,
+                    "id": "whatsapp",
+                    "value": "966544416547",
+                    "required": false,
+                    "format": "text",
+                    "description": "أرقام فقط بدون علامة +",
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "value": "images/store-photo.jpg",
+                    "label": "صورة المتجر",
+                    "id": "image",
+                    "format": "image",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null
+                }
+            ]
         }
     ],
     "support_url": null,

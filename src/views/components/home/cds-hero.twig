@@ -1,0 +1,82 @@
+{#
+| Variable    | Type    | Description                                                |
+|-------------|---------|------------------------------------------------------------|
+| badge       | string  | Small badge above the headline                             |
+| title_line1 | string  | Headline first line                                        |
+| title_line2 | string  | Headline second line (highlighted in white)                |
+| subtitle    | string  | Supporting paragraph                                       |
+| cta1_text   | string  | Primary button label                                       |
+| cta1_link   | string  | Primary button target (route name or URL)                  |
+| cta2_text   | string  | Secondary button label                                     |
+| cta2_link   | string  | Secondary button target (route name or URL)                |
+| image.url   | string  | Hero image                                                 |
+| componentId | string  | Component id                                               |
+#}
+<section component-id="{{ componentId }}" class="relative bg-brand overflow-hidden">
+  {# Animated background layer (decorative pet pattern) #}
+  <div class="absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-overlay">
+    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+      <g opacity="0.08">
+        <path d="M50 50 Q 60 40 70 50 T 90 50" fill="none" stroke="#fdf9f0" stroke-linecap="round" stroke-width="2">
+          <animateTransform attributeName="transform" dur="10s" repeatCount="indefinite" type="translate" values="0,0; 5,5; 0,0"></animateTransform>
+        </path>
+        <circle cx="150" cy="80" fill="#fdf9f0" r="3"></circle>
+        <circle cx="160" cy="70" fill="#fdf9f0" r="3"></circle>
+        <circle cx="170" cy="80" fill="#fdf9f0" r="3"></circle>
+        <circle cx="160" cy="95" fill="#fdf9f0" r="8"></circle>
+        <path d="M400 150 C 420 130 450 130 470 150" fill="none" opacity="0.5" stroke="#fdf9f0" stroke-dasharray="4 4" stroke-width="1.5"></path>
+        <g transform="translate(600, 100) rotate(15)">
+          <circle cx="0" cy="-10" fill="#fdf9f0" r="4"></circle>
+          <circle cx="12" cy="-5" fill="#fdf9f0" r="4"></circle>
+          <circle cx="-12" cy="-5" fill="#fdf9f0" r="4"></circle>
+          <path d="M-10 5 Q 0 15 10 5 L 10 15 Q 0 25 -10 15 Z" fill="#fdf9f0"></path>
+        </g>
+        <path d="M100 300 Q 150 250 200 300 T 300 300" fill="none" stroke="#fdf9f0" stroke-dasharray="2 6" stroke-width="1"></path>
+      </g>
+    </svg>
+  </div>
+  {# Soft beige decorative icons #}
+  <span class="material-symbols-outlined cds-decor-icon" style="top: 15%; right: 10%; font-size: 48px; transform: rotate(15deg);">pets</span>
+  <span class="material-symbols-outlined cds-decor-icon" style="bottom: 20%; left: 15%; font-size: 36px; transform: rotate(-20deg);">pets</span>
+  <span class="material-symbols-outlined cds-decor-icon" style="top: 30%; left: 40%; font-size: 24px; transform: rotate(45deg);">pets</span>
+  <span class="material-symbols-outlined cds-decor-icon" style="bottom: 10%; right: 30%; font-size: 28px; transform: rotate(10deg);">cruelty_free</span>
+  <span class="material-symbols-outlined cds-decor-icon" style="top: 10%; left: 10%; font-size: 20px; transform: rotate(-10deg);">star</span>
+  <span class="material-symbols-outlined cds-decor-icon" style="top: 40%; right: 40%; font-size: 32px; transform: rotate(-10deg);">bone</span>
+  <span class="material-symbols-outlined cds-decor-icon" style="bottom: 30%; left: 10%; font-size: 28px; transform: rotate(20deg);">toys</span>
+  <span class="material-symbols-outlined cds-decor-icon" style="top: 20%; left: 20%; font-size: 40px; transform: rotate(-30deg);">pets</span>
+  <svg class="cds-decor-icon w-64 h-64" style="top: -10%; left: 30%; opacity: 0.1;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path d="M45.7,-76.4C58.9,-69.1,68.9,-54.6,77.3,-40.1C85.7,-25.6,92.5,-11.1,90.4,2.5C88.3,16.1,77.3,28.8,66.8,40.1C56.3,51.4,46.3,61.3,34.2,68.7C22.1,76.1,7.9,81,-6.1,84.6C-20.1,88.2,-34,90.5,-46.1,84.9C-58.2,79.3,-68.5,65.8,-76.4,51.5C-84.3,37.2,-89.8,22.1,-89.9,6.9C-90,-8.3,-84.7,-23.6,-76.3,-36.8C-67.9,-50,-56.4,-61.1,-43.1,-68.3C-29.8,-75.5,-14.9,-78.8,0.9,-80.3C16.7,-81.8,32.5,-83.7,45.7,-76.4Z" fill="currentColor" transform="translate(100 100)"></path>
+  </svg>
+
+  {% set cta1_href = cta1_link starts with 'http' ? cta1_link : link(cta1_link|default('products')) %}
+  {% set cta2_href = cta2_link starts with 'http' ? cta2_link : link(cta2_link|default('products')) %}
+  {% set hero_img = image.url matches '~^https?://~' ? image.url : image.url|asset %}
+
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20 flex flex-col md:flex-row items-center gap-12 relative z-10">
+    <div class="md:w-1/2 flex flex-col items-start">
+      <div class="inline-block bg-white/20 text-deep-charcoal px-4 py-1 rounded-full text-label-sm mb-6 font-bold backdrop-blur-sm">{{ badge }}</div>
+      <h1 class="text-headline-lg md:text-headline-display text-deep-charcoal mb-6 font-extrabold text-right w-full">
+        {{ title_line1 }}<br>
+        <span class="text-white drop-shadow-sm">{{ title_line2 }}</span>
+      </h1>
+      <p class="text-body-lg text-deep-charcoal/80 mb-10 max-w-lg font-medium text-right w-full">
+        {{ subtitle }}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+        <a href="{{ cta1_href }}" class="bg-deep-charcoal text-white px-10 py-4 rounded-md hover:bg-black transition-colors duration-300 text-lg font-bold flex items-center justify-center gap-2 shadow-lg">
+          {{ cta1_text }} <span class="material-symbols-outlined">shopping_cart</span>
+        </a>
+        {# Grooming packages live on the storefront products page until a dedicated page is created #}
+        <a href="{{ cta2_href }}" class="bg-transparent border-2 border-deep-charcoal text-deep-charcoal px-8 py-4 rounded-md hover:bg-deep-charcoal hover:text-white transition-colors duration-300 text-lg font-bold flex items-center justify-center gap-2">
+          {{ cta2_text }} <span class="material-symbols-outlined">spa</span>
+        </a>
+      </div>
+    </div>
+    <div class="md:w-1/2 relative flex justify-center items-center w-full">
+      <div class="absolute top-1/2 right-1/2 w-96 h-96 bg-white rounded-full mix-blend-overlay blur-3xl opacity-30 -z-10 translate-x-1/2 -translate-y-1/2"></div>
+      <img src="{{ hero_img }}" alt="{{ image.alt|default(store.name) }}"
+           class="w-full h-auto object-cover z-10 relative drop-shadow-2xl rounded-2xl scale-105 origin-bottom border-4 border-white/20"
+           fetchpriority="high" loading="eager" width="512" height="512">
+    </div>
+  </div>
+</section>

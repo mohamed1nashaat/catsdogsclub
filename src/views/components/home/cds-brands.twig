@@ -1,0 +1,26 @@
+{#
+| Variable        | Type     | Description                                           |
+|-----------------|----------|-------------------------------------------------------|
+| brands          | array    | List of brand logos                                   |
+| brands[].image.url | string | Brand logo image                                   |
+| brands[].name   | string   | Brand name (alt / aria-label)                         |
+| brands[].url    | string   | Brand link (route name or URL)                        |
+| componentId     | string   | Component id                                          |
+#}
+<section component-id="{{ componentId }}" class="py-12 bg-warm-ivory border-y border-outline-variant/20 relative overflow-hidden">
+  <span class="material-symbols-outlined cds-decor-icon !text-outline-variant/10" style="top: 20%; right: 5%; font-size: 32px; transform: rotate(15deg);">pets</span>
+  <span class="material-symbols-outlined cds-decor-icon !text-outline-variant/10" style="bottom: 10%; left: 10%; font-size: 28px; transform: rotate(-20deg);">bone</span>
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+    <h2 class="text-headline-lg text-deep-charcoal mb-8 text-right w-full">تسوّق حسب البراند</h2>
+    <div class="flex justify-between items-center flex-wrap gap-8 opacity-70 hover:opacity-100 transition-opacity duration-500">
+      {% for brand in brands %}
+        {# Brand logos are display-only in the design; link them to the brands page. #}
+        {% set brand_href = brand.url starts with 'http' ? brand.url : link(brand.url|default('brands')) %}
+        {% set brand_img = brand.image.url matches '~^https?://~' ? brand.image.url : brand.image.url|asset %}
+        <a href="{{ brand_href }}" aria-label="{{ brand.name }}">
+          <img src="{{ brand_img }}" alt="{{ brand.name }}" class="h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" loading="lazy">
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

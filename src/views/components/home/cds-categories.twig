@@ -1,0 +1,34 @@
+{#
+| Variable          | Type     | Description                                          |
+|-------------------|----------|------------------------------------------------------|
+| title             | string   | Section title                                        |
+| categories        | array    | List of category cards (up to 8)                     |
+| categories[].image.url | string | Category image                                  |
+| categories[].title | string  | Category name                                        |
+| categories[].url  | string   | Category link (route name or URL)                    |
+| componentId       | string   | Component id                                         |
+#}
+<section component-id="{{ componentId }}" class="py-12 bg-warm-ivory border-t border-outline-variant/20 relative overflow-hidden">
+  <span class="material-symbols-outlined cds-decor-icon !text-outline-variant/10" style="top: 10%; right: 80%; font-size: 24px; transform: rotate(45deg);">pets</span>
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="text-headline-lg text-deep-charcoal">{{ title }}</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+      {% for category in categories %}
+        {% set category_href = category.url starts with 'http' ? category.url : link(category.url|default('categories')) %}
+        {% set category_img = category.image.url matches '~^https?://~' ? category.image.url : category.image.url|asset %}
+        <a class="flex flex-col gap-3 group" href="{{ category_href }}">
+          <div class="w-full aspect-square rounded-xl overflow-hidden relative bg-soft-cream">
+            <img src="{{ category_img }}" alt="{{ category.title }}"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+            <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+          </div>
+          <div class="flex justify-center items-center text-center">
+            <span class="text-label-sm text-deep-charcoal font-bold group-hover:text-brand transition-colors">{{ category.title }}</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
