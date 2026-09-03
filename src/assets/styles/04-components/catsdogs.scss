@@ -195,3 +195,99 @@ body,
     }
   }
 }
+
+/* Card rating — star + value + review count, brand orange */
+.cds-products,
+.container--products-list,
+[data-testid="store-product-related"] {
+  .s-product-card-rating {
+    @apply flex items-center gap-1 text-sm font-bold text-brand mt-1;
+
+    small {
+      @apply text-[11px] font-normal text-outline;
+    }
+  }
+}
+
+/* ==========================================================================
+   Global floating UI — mobile bottom nav, WhatsApp float, back-to-top
+   ========================================================================== */
+
+/* --- Mobile sticky bottom nav (visible < md only) ------------------------- */
+.cds-mobile-nav {
+  @apply fixed bottom-0 inset-x-0 z-40 md:hidden flex bg-warm-ivory border-t border-warm-sand/60 shadow-[0_-2px_10px_rgba(0,0,0,0.06)];
+  height: 60px;
+  padding-bottom: env(safe-area-inset-bottom);
+
+  /* On product pages Salla's native sticky ATC bar (≤640px) takes the same
+     spot, so keep the nav out of its way there */
+  @media (max-width: 640px) {
+    body.is-sticky-product-bar.product-single & {
+      display: none;
+    }
+  }
+
+  &__item {
+    @apply flex-1 flex flex-col items-center justify-center gap-0.5 text-[11px] font-bold text-on-surface-variant no-underline transition-colors hover:text-brand;
+
+    .material-symbols-outlined {
+      @apply text-[22px];
+    }
+  }
+
+  &__item--whatsapp {
+    @apply text-whatsapp hover:text-whatsapp-dark;
+  }
+
+  &__badge {
+    @apply absolute -top-1 -end-1 bg-brand text-white text-[10px] leading-none min-w-4 h-4 px-0.5 rounded-full flex items-center justify-center font-bold;
+  }
+}
+
+/* Keep content clear of the fixed nav on mobile */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 60px;
+  }
+}
+
+/* --- Floating WhatsApp button (bottom-left on RTL, above the mobile nav) -- */
+.cds-whatsapp-float {
+  @apply fixed z-40 left-4 w-14 h-14 rounded-full bg-whatsapp text-white shadow-lg hover:bg-whatsapp-dark transition-colors flex items-center justify-center;
+  bottom: calc(60px + 12px + env(safe-area-inset-bottom));
+
+  @media (min-width: 768px) {
+    bottom: 1.25rem;
+  }
+
+  svg {
+    @apply w-7 h-7 fill-current;
+  }
+
+  /* subtle label tooltip, desktop only (tooltip opens toward the page) */
+  &__label {
+    @apply hidden md:block absolute start-full ms-3 top-1/2 -translate-y-1/2 whitespace-nowrap bg-deep-charcoal text-white text-xs font-bold px-3 py-1.5 rounded-md opacity-0 pointer-events-none transition-opacity duration-300;
+  }
+
+  &:hover &__label {
+    @apply opacity-100;
+  }
+}
+
+/* --- Back-to-top — stacked above the WhatsApp float ----------------------- */
+.cds-back-to-top {
+  @apply fixed z-40 left-4 w-11 h-11 rounded-full bg-deep-charcoal text-white shadow-lg hover:bg-brand transition-all duration-300 flex items-center justify-center cursor-pointer border-0 opacity-0 pointer-events-none;
+  bottom: calc(60px + 12px + 64px + env(safe-area-inset-bottom));
+
+  @media (min-width: 768px) {
+    bottom: 5.5rem;
+  }
+
+  svg {
+    @apply w-5 h-5;
+  }
+
+  &.is-visible {
+    @apply opacity-100 pointer-events-auto;
+  }
+}

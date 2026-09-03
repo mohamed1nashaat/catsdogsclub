@@ -257,6 +257,7 @@ class ProductCard extends HTMLElement {
               `<div class="s-product-card-rating">
                 <i class="sicon-star2 before:text-orange-300"></i>
                 <span>${this.product.rating.stars}</span>
+                ${this.product.rating.count ? `<small>(${salla.helpers.number(this.product.rating.count)})</small>` : ''}
               </div>`
                : ``}
           </div>

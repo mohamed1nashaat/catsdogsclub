@@ -15,6 +15,7 @@ class Product extends BasePage {
         });
 
         this.initProductOptionValidations();
+        this.initStickyAtcBar();
 
         if(imageZoom){
             // call the function when the page is ready
@@ -22,6 +23,25 @@ class Product extends BasePage {
             // listen to screen resizing
             window.addEventListener('resize', () => this.initImagesZooming());
         }
+    }
+
+    initStickyAtcBar() {
+      const bar = document.querySelector('#cds-sticky-atc'),
+        mainBtn = document.querySelector('.sticky-product-bar__btn'),
+        form = document.querySelector('.product-form');
+
+      if (!bar || !mainBtn || !form || !('IntersectionObserver' in window)) {
+        return;
+      }
+
+      // show the bar once the main ATC button scrolls out of view (above the viewport),
+      // hide it again when it comes back
+      new IntersectionObserver(([entry]) => {
+        bar.classList.toggle('is-visible', !entry.isIntersecting && entry.boundingClientRect.top < 0);
+      }, { threshold: 0 }).observe(mainBtn);
+
+      // reuse the product form so options/quantity/validation are respected
+      app.onClick('.cds-sticky-atc__btn', () => form.requestSubmit());
     }
 
     initProductOptionValidations() {

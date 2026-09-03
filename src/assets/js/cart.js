@@ -11,7 +11,8 @@ class Cart extends BasePage {
             freeShippingMsg: '#free-shipping-msg',
             freeShipApplied: '#free-shipping-applied',
             cartGifting: '#cart-gifting',
-            sallaGifting:'#salla-gifting'
+            sallaGifting:'#salla-gifting',
+            cdsFreeShipping: '#cds-free-shipping'
         });
 
         this.initSubmitCart();
@@ -96,6 +97,9 @@ class Cart extends BasePage {
         // update each item data
         cartData.items?.forEach(item => this.updateItemInfo(item));
 
+        // theme-owned free-shipping progress bar (threshold from twilight setting)
+        this.updateCustomFreeShippingBar(cartData);
+
         // Summary totals (subtotal, discount, shipping, tax, options) are owned by
         // <salla-cart-summary-card> now; the theme only manages the free-shipping bar.
         app.toggleElementClassIf(app.freeShipping, 'has_free', 'hidden', () => !!cartData.free_shipping_bar);
@@ -113,6 +117,33 @@ class Cart extends BasePage {
             : salla.lang.get('pages.cart.free_shipping_alert', { amount: salla.money(cartData.free_shipping_bar.remaining) });
         app.freeShippingBar.children[0].style.width = cartData.free_shipping_bar.percent + '%';
 
+    }
+
+    /**
+     * Theme-owned free-shipping progress bar (pages/cart.twig #cds-free-shipping).
+     * Unlike Salla's native bar, the threshold comes from the twilight setting
+     * `free_shipping_threshold` and is driven by the cart subtotal.
+     * @param {import("@salla.sa/twilight/types/api/cart").CartSummary} cartData
+     */
+    updateCustomFreeShippingBar(cartData) {
+        const bar = app.cdsFreeShipping;
+        if (!bar) {
+            return;
+        }
+        const threshold = parseFloat(bar.dataset.threshold) || 0;
+        if (!threshold) {
+            return;
+        }
+        const subtotal = cartData?.sub_total || 0,
+            remaining = Math.max(threshold - subtotal, 0),
+            percent = Math.min((subtotal / threshold) * 100, 100);
+
+        bar.dataset.subtotal = subtotal;
+        bar.classList.toggle('is-free', remaining <= 0);
+        bar.querySelector('.cds-free-shipping__progress').style.width = percent + '%';
+        bar.querySelector('.cds-free-shipping__msg').innerHTML = remaining > 0
+            ? `أضفت ${salla.money(subtotal)} — باقي ${salla.money(remaining)} للشحن المجاني 🎉`
+            : 'تهانينا! حصلت على شحن مجاني';
     }
 
     /**

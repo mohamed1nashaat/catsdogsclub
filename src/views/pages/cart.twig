@@ -56,6 +56,27 @@
         </nav>
         <h1 class="sr-only">{{ trans('blocks.header.cart') }}</h1>
         <salla-conditional-offer data-testid="store-cart-conditional-offer"></salla-conditional-offer>
+
+        {# Free-shipping progress bar — threshold from the theme setting free_shipping_threshold #}
+        {% set fs_threshold = theme.settings.get('free_shipping_threshold', 200) %}
+        {% if cart.items|length and fs_threshold > 0 %}
+            {% set fs_remaining = max(fs_threshold - cart.sub_total, 0) %}
+            {% set fs_percent = fs_remaining > 0 ? ((cart.sub_total / fs_threshold * 100)|round(0, 'floor')) : 100 %}
+            <div id="cds-free-shipping" data-testid="store-cart-free-shipping-progress"
+                 class="cds-free-shipping {{ fs_remaining > 0 ? '' : 'is-free' }}"
+                 data-threshold="{{ fs_threshold }}" data-subtotal="{{ cart.sub_total }}">
+                <p class="cds-free-shipping__msg">
+                    {% if fs_remaining > 0 %}
+                        أضفت {{ cart.sub_total|money }} — باقي {{ fs_remaining|money }} للشحن المجاني 🎉
+                    {% else %}
+                        تهانينا! حصلت على شحن مجاني
+                    {% endif %}
+                </p>
+                <div class="cds-free-shipping__track">
+                    <span class="cds-free-shipping__progress" style="width: {{ fs_percent }}%"></span>
+                </div>
+            </div>
+        {% endif %}
         <div class="pt-5 flex flex-col items-start lg:flex-row pb-32 lg:pb-20">
             <div class="main-content w-full lg:w-[calc(100%-384px)]">
                 {% hook 'cart:items.start' %}
@@ -221,6 +242,8 @@
                     <salla-cart-summary-card data-testid="store-cart-summary"></salla-cart-summary-card>
                     {% hook 'cart:summary-card.end' %}
                     {% hook 'cart:summary.end' %}
+
+                    {% include 'pages.partials.trust-badges' %}
 
                      <!-- Tiered Offer Component -->
                     <salla-tiered-offer data-testid="store-cart-tiered-offer"></salla-tiered-offer>

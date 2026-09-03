@@ -441,6 +441,28 @@
                     {% endif %}
                 </form>
 
+                {# Low-stock urgency + trust badges, right below the add-to-cart point #}
+                {% if product.quantity and product.quantity <= 5 and not product.is_hidden_quantity %}
+                    <p class="cds-low-stock">
+                        <i class="sicon-fire"></i>
+                        بقي {{ product.quantity }} فقط في المخزون — اطلب الآن
+                    </p>
+                {% endif %}
+
+                {% include 'pages.partials.trust-badges' %}
+
+                {# Sticky add-to-cart bar (≥md where the mobile bottom nav is hidden; small screens are covered by Salla's native sticky bar) #}
+                {% if product.is_available %}
+                    <div id="cds-sticky-atc" class="cds-sticky-atc" data-testid="store-product-sticky-atc">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cds-sticky-atc__img">
+                        <div class="cds-sticky-atc__info">
+                            <h3 class="cds-sticky-atc__name">{{ product.name }}</h3>
+                            <p class="cds-sticky-atc__price total-price">{{ product.starting_price ? product.starting_price|money : product.price|money }}</p>
+                        </div>
+                        <button type="button" class="cds-sticky-atc__btn">{{ product.add_to_cart_label }}</button>
+                    </div>
+                {% endif %}
+
                 {% hook 'product:single.description.end' %}
                 <salla-quick-order data-testid="store-product-quick-order" class="mt-5 md:-mb-2 block"></salla-quick-order>
             </div>

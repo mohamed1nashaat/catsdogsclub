@@ -306,3 +306,95 @@ a.text-primary,
 .text-primary a {
   @apply text-brand;
 }
+
+/* ==========================================================================
+   CRO additions — sticky ATC bar / trust badges / low stock / free shipping
+   ========================================================================== */
+
+/* Sticky add-to-cart bar — slides in at bottom-center once the main ATC
+   button scrolls out of view. Desktop ≥md only (the mobile bottom nav is
+   hidden there); on small screens Salla's native sticky bar
+   (sticky_add_to_cart setting) already covers this. */
+.cds-sticky-atc {
+  @apply hidden md:flex items-center gap-4 bg-warm-ivory border border-warm-sand/60 shadow-xl rounded-xl px-4 py-3;
+  position: fixed;
+  z-index: 50;
+  left: 50%;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  width: min(34rem, calc(100% - 2rem));
+  transform: translate(-50%, calc(100% + 2rem));
+  transition: transform 0.35s ease;
+
+  &.is-visible {
+    transform: translate(-50%, 0);
+  }
+
+  &__img {
+    @apply w-12 h-12 rounded-lg object-cover shrink-0 bg-soft-cream;
+  }
+
+  &__info {
+    @apply flex-1 min-w-0;
+  }
+
+  &__name {
+    @apply truncate text-sm font-bold text-deep-charcoal mb-0.5;
+  }
+
+  &__price {
+    @apply text-brand font-bold text-sm m-0;
+  }
+
+  &__btn {
+    @apply bg-deep-charcoal text-white text-sm font-bold rounded-lg px-6 py-2.5 shrink-0 cursor-pointer border-0 transition-colors duration-300 hover:bg-brand;
+  }
+}
+
+/* Low-stock urgency note (product page, next to the ATC button) */
+.cds-low-stock {
+  @apply flex items-center gap-1.5 text-sm font-bold text-brand mt-3 mb-0;
+}
+
+/* Trust badges row — product page ATC point + cart summary */
+.cds-trust-badges {
+  @apply grid grid-cols-2 gap-2.5 list-none m-0 p-0 mt-4;
+
+  @media (min-width: 768px) {
+    @apply grid-cols-4;
+  }
+
+  &__item {
+    @apply flex items-center gap-2 text-[11px] leading-snug font-bold text-deep-charcoal bg-warm-ivory border border-warm-sand/50 rounded-lg px-3 py-2.5;
+  }
+
+  &__icon {
+    @apply w-5 h-5 shrink-0 text-brand;
+  }
+}
+
+/* Cart page: free-shipping progress bar (threshold = free_shipping_threshold setting) */
+.cds-free-shipping {
+  @apply bg-warm-ivory border border-warm-sand/60 rounded-xl p-4 mb-5 shadow-sm;
+
+  &__msg {
+    @apply text-sm font-bold text-deep-charcoal mb-2.5 m-0;
+  }
+
+  &__track {
+    @apply h-2.5 bg-soft-cream rounded-full overflow-hidden;
+  }
+
+  &__progress {
+    @apply block h-full bg-brand rounded-full transition-all duration-500;
+  }
+
+  &.is-free {
+    .cds-free-shipping__msg {
+      @apply text-whatsapp-dark;
+    }
+
+    .cds-free-shipping__progress {
+      @apply bg-whatsapp-dark;
+    }
+  }
+}

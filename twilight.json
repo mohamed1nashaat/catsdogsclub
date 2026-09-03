@@ -270,6 +270,19 @@
             "required": false,
             "value": false,
             "selected": false
+        },
+        {
+            "type": "number",
+            "format": "integer",
+            "label": "حد الشحن المجاني (ر.س)",
+            "description": "يظهر شريط تقدم الشحن المجاني في سلة المشتريات عند تجاوز هذا المبلغ",
+            "id": "free_shipping_threshold",
+            "labelHTML": null,
+            "placeholder": "200",
+            "icon": "sicon-shipping-fast",
+            "value": 200,
+            "required": false,
+            "minimum": 0
         }
     ],
     "components": [

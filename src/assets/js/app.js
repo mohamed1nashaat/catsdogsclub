@@ -32,6 +32,7 @@ class App extends AppHelpers {
 
     initTootTip();
     this.loadModalImgOnclick();
+    this.initBackToTop();
 
     salla.comment.event.onAdded(() => window.location.reload());
 
@@ -276,11 +277,26 @@ isElementLoaded(selector){
     salla.cart.event.onUpdated(summary => {
       document.querySelectorAll('[data-cart-total]').forEach(el => el.innerHTML = salla.money(summary.total));
       document.querySelectorAll('[data-cart-count]').forEach(el => el.innerText = salla.helpers.number(summary.count));
+      document.querySelectorAll('[data-cart-count-badge]').forEach(el => {
+        el.innerText = salla.helpers.number(summary.count);
+        el.classList.toggle('hidden', !summary.count);
+      });
     });
 
     salla.cart.event.onItemAdded((response, prodId) => {
       app.element('salla-cart-summary').animateToCart(app.element(`#product-${prodId} img`));
     });
+  }
+
+  initBackToTop() {
+    const btn = document.querySelector('#cds-back-to-top');
+    if (!btn) {
+      return;
+    }
+    const toggle = () => btn.classList.toggle('is-visible', window.scrollY > 600);
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
+    app.onClick(btn, () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 }
 
